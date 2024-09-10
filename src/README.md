@@ -188,7 +188,7 @@ When a question has been clicked and opened in the question list, its text autom
 
 ### Categories
 
-Well categorized articles are key to a usable knowledge base. Category filters can be added to searches in three ways in ProposalForce. Selections made in any of the three places are reflected in all of the three places
+Well categorized articles are key to a usable knowledge base. Category filters can be added to searches in three ways in  Selections made in any of the three places are reflected in all of the three places
 
 _Search Categories_
 Below the search box is another search input. Begin typing the name of a category and search results will appear below. Click a result to apply the filter. Click the 'X' on an applied filter to remove it; hover over an applied filter to see the hierarchy of categories it falls into.

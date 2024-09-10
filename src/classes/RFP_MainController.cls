@@ -67,7 +67,7 @@ public static string getCurrentUserId() {
 @AuraEnabled
 public static List<rfp_Question__c> getQuestions(string selectedRfpId) {
 	try{
-		proposalforce.RFP_MainController.checkAccess('RFP_Question__c', new string[] {
+		RFP_MainController.checkAccess('RFP_Question__c', new string[] {
 				'name',
 				'id',
 				'Assignee__c',
@@ -182,7 +182,7 @@ private static string buildKnowledgeQueryString(String[] stemmedNonStopWords, st
 
 //remove stopwords
 private static list<string> removeStopWords(String queryString) {
-	map<string, boolean> stopWordsMap = proposalforce.RFPStopWords.getStopWords();
+	map<string, boolean> stopWordsMap = RFPStopWords.getStopWords();
 	String[] queryWords = queryString.split(' ');
 	String[] nonStopWords = new String[] {};
 	for(string w : queryWords) {
