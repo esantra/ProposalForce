@@ -4,7 +4,10 @@
  SPDX-License-Identifier: BSD-3-Clause 
  For full license text, see the LICENSE file in the repo root or https: //opensource.org/licenses/BSD-3-Clause
 -->
-<a href="https://githubsfdeploy.herokuapp.com/app/githubdeploy/esantra/ProposalForce">click here</a>
+<a href="https://githubsfdeploy.herokuapp.com/app/githubdeploy/esantra/ProposalForce">click here to deploy to your org</a>
+
+THIS IS A FORKED COPY OF PROPOSALFORCE THAT MAKES IT AN UNMANAGED, NAMESPACE FREE PACKAGE THAT HOPEFULLY 
+ISN'T DEPENDENT ON KNOWLEDGE FOR ORGS WITHOUT KNOWLEDGE
 
 # ProposalForce
 

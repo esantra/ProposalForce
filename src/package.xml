@@ -2,7 +2,6 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ProposalForce</fullName>
     <apiAccessLevel>Unrestricted</apiAccessLevel>
-    <namespacePrefix>proposalforce</namespacePrefix>
     <types>
         <members>RFPComponent</members>
         <members>RFPResponseSearch</members>
