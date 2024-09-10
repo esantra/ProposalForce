@@ -9,7 +9,7 @@
 
   <aura:attribute name="state" type="Map" />
   <aura:attribute name="RFPSearchHits" type="List" default="[]"/>
-  <aura:attribute name="options" type="list" default="[{'label': 'Name', 'value': 'Name'}, {'label': 'Most Recent', 'value': 'MostRecent'},{'label': 'Least Recent', 'value': 'LeastRecent'}, {'label': 'Most Complete', 'value': 'MostComplete'}, {'label': 'Least Complete', 'value': 'LeastComplete'} ]"
+  <aura:attribute name="options" type="List" default="[{'label': 'Name', 'value': 'Name'}, {'label': 'Most Recent', 'value': 'MostRecent'},{'label': 'Least Recent', 'value': 'LeastRecent'}, {'label': 'Most Complete', 'value': 'MostComplete'}, {'label': 'Least Complete', 'value': 'LeastComplete'} ]"
   />
 
   <aura:handler name="init" value="{!this}" action="{!c.init}" />
