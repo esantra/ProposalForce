@@ -26,7 +26,7 @@
         <members>rm_rfp_searchAndSortRFPs</members>
         <members>rm_rfp_settingsPanel</members>
         <name>AuraDefinitionBundle</name>
-    </types-->
+    </types--> 
     <types>
         <members>Proposals</members>
         <name>CustomApplication</name>
