@@ -5,7 +5,6 @@
  For full license text, see the LICENSE file in the repo root or https: //opensource.org/licenses/BSD-3-Clause
 -->
 
-<?xml version="1.0" encoding="UTF-8"?>
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <brand>
         <headerColor>#0070D2</headerColor>
