@@ -8,7 +8,8 @@
         <members>RFPStopWords</members>
         <members>RFP_MainController</members>
         <members>getDataCategoriesInterface</members>
-        <!--members>rm_rfp_Test</members-->
+        <members>rm_rfp_Test</members>
+        <members>proposal_force_getDataCategories</members>
         <name>ApexClass</name>
     </types>
     <!--types>

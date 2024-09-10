@@ -10,10 +10,10 @@ For full license text, see the LICENSE file in the repo root or https://opensour
         <application>Proposals</application>
         <visible>true</visible>
     </applicationVisibilities>
-    <classAccesses>
+    <!--classAccesses>
         <apexClass>RFPComponent</apexClass>
         <enabled>true</enabled>
-    </classAccesses>
+    </classAccesses-->
     <classAccesses>
         <apexClass>RFPResponseSearch</apexClass>
         <enabled>true</enabled>
