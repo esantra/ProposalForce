@@ -46,7 +46,7 @@
     const { RFPs, selectedRfpId } = component.get('v.state')
     const newComplianceResponses = component.get('v.newComplianceResponses')
     const rfp = RFPs.filter(r => r.Id === selectedRfpId)[0]
-    rfp.proposalforce__Compliance_Responses__c = newComplianceResponses.join(
+    rfp.Compliance_Responses__c = newComplianceResponses.join(
       ';'
     )
     helper.fireEvent('rm_rfp_action', {

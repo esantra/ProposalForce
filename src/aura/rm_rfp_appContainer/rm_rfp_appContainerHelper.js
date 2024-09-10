@@ -176,12 +176,12 @@
 
   summaryBuilder: function(questions) {
     questions.forEach((q, i) => {
-      if (q.proposalforce__RFP_Question_Text__c) {
-        const beginningCharacters = q.proposalforce__RFP_Question_Text__c.slice(
+      if (q.RFP_Question_Text__c) {
+        const beginningCharacters = q.RFP_Question_Text__c.slice(
           0,
           50
         )
-        if (beginningCharacters === q.proposalforce__RFP_Question_Text__c) {
+        if (beginningCharacters === q.RFP_Question_Text__c) {
           q.summary = beginningCharacters
         } else {
           const lastSpaceIdx = beginningCharacters

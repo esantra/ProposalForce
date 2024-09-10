@@ -5,17 +5,17 @@
 
 public with sharing class RFP_MainController {
 @AuraEnabled
-public static List<proposalforce__RFP__c> getRFPs() {
+public static List<RFP__c> getRFPs() {
 	try{
-		RFP_MainController.checkAccess('proposalforce__rfp__c', new string[] {
-				'name', 'proposalforce__Compliance_Responses__c', 'proposalforce__Completion_Percentage__c', 'CreatedDate', 'id'
+		RFP_MainController.checkAccess('rfp__c', new string[] {
+				'name', 'Compliance_Responses__c', 'Completion_Percentage__c', 'CreatedDate', 'id'
 			}, 'read');
 
 		return [SELECT name,
-		        proposalforce__Compliance_Responses__c,
-		        proposalforce__Completion_Percentage__c,
+		        Compliance_Responses__c,
+		        Completion_Percentage__c,
 		        CreatedDate,
-		        id FROM proposalforce__rfp__c order by proposalforce__Completion_Percentage__c desc limit 1000];
+		        id FROM rfp__c order by Completion_Percentage__c desc limit 1000];
 
 	}
 	catch(exception e) {
@@ -44,7 +44,7 @@ public static string getNamespacePrefix() {
 @AuraEnabled
 public static string getKnowledgeObjectName() {
 	try{
-		string knowledgeObjectName = [select proposalforce__Knowledge_Object_Name__c from proposalforce__Proposalforce_Info__mdt limit 1].proposalforce__Knowledge_Object_Name__c;
+		string knowledgeObjectName = [select Knowledge_Object_Name__c from Proposalforce_Info__mdt limit 1].Knowledge_Object_Name__c;
 		return knowledgeObjectName;
 	}
 	catch(exception e) {
@@ -65,39 +65,39 @@ public static string getCurrentUserId() {
 
 
 @AuraEnabled
-public static List<proposalforce__rfp_Question__c> getQuestions(string selectedRfpId) {
+public static List<rfp_Question__c> getQuestions(string selectedRfpId) {
 	try{
-		proposalforce.RFP_MainController.checkAccess('proposalforce__RFP_Question__c', new string[] {
+		proposalforce.RFP_MainController.checkAccess('RFP_Question__c', new string[] {
 				'name',
 				'id',
-				'proposalforce__Assignee__c',
-				'proposalforce__RFP_Response__c',
-				'proposalforce__RFP_Question_Text__c',
-				'proposalforce__status__c',
-				'proposalforce__Compliance_Response__c',
-				'proposalforce__RFP__c'
+				'Assignee__c',
+				'RFP_Response__c',
+				'RFP_Question_Text__c',
+				'status__c',
+				'Compliance_Response__c',
+				'RFP__c'
 			}, 'read');
 
-		RFP_MainController.checkAccess('proposalforce__RFP_Response__c', new string[] {
+		RFP_MainController.checkAccess('RFP_Response__c', new string[] {
 				'Name',
-				'proposalforce__Response_Text__c'
+				'Response_Text__c'
 			}, 'read');
 
-		RFP_MainController.checkAccess('proposalforce__RFP__c', new string[] {
+		RFP_MainController.checkAccess('RFP__c', new string[] {
 				'Name'
 			}, 'read');
 
 		return [SELECT name,
 		        id,
-		        proposalforce__RFP_Response__c,
-		        proposalforce__Assignee__c,
-		        proposalforce__RFP_Question_Text__c,
-		        proposalforce__status__c,
-		        proposalforce__Compliance_Response__c,
-		        proposalforce__RFP__c,
-		        proposalforce__RFP__r.Name,
-		        proposalforce__RFP_Response__r.Name,
-		        proposalforce__RFP_Response__r.proposalforce__Response_Text__c FROM proposalforce__RFP_Question__c WHERE proposalforce__rfp__c = : String.escapeSingleQuotes(selectedRfpId) order by name];
+		        RFP_Response__c,
+		        Assignee__c,
+		        RFP_Question_Text__c,
+		        status__c,
+		        Compliance_Response__c,
+		        RFP__c,
+		        RFP__r.Name,
+		        RFP_Response__r.Name,
+		        RFP_Response__r.Response_Text__c FROM RFP_Question__c WHERE rfp__c = : String.escapeSingleQuotes(selectedRfpId) order by name];
 	}
 	catch(exception e) {
 		throw new AuraHandledException(e.getMessage());
@@ -136,7 +136,7 @@ public static List<proposalforce__rfp_Question__c> getQuestions(string selectedR
 public static List<sobject> getKnowledgeArticles(string queryString, string categoryNames) {
 	try{
 		string knowledgeObjectName = 
-    [select proposalforce__Knowledge_Object_Name__c from proposalforce__Proposalforce_Info__mdt limit 1].proposalforce__Knowledge_Object_Name__c;
+    [select Knowledge_Object_Name__c from Proposalforce_Info__mdt limit 1].Knowledge_Object_Name__c;
 		
     string namespacePrefix = getNamespacePrefix();
 		RFP_MainController.checkAccess(namespacePrefix + knowledgeObjectName, new string[] {
@@ -174,7 +174,7 @@ private static string buildKnowledgeQueryString(String[] stemmedNonStopWords, st
 		}
 	}
 
-	string knowledgeObjectName = [select proposalforce__Knowledge_Object_Name__c from proposalforce__Proposalforce_Info__mdt limit 1].proposalforce__Knowledge_Object_Name__c;
+	string knowledgeObjectName = [select Knowledge_Object_Name__c from Proposalforce_Info__mdt limit 1].Knowledge_Object_Name__c;
 	string searchQuery = 'find \'' + terms + '\' returning ' + namespacePrefix + knowledgeObjectName + '(id, title, UrlName, KnowledgeArticleId,' + namespacePrefix + 'answer__c limit 25)';
   searchQuery = categoryNames.length() > 0 ? searchQuery + ' WITH DATA CATEGORY ' + categoryNames : searchQuery;
 	return searchQuery;
@@ -205,7 +205,7 @@ private static list<string> removeStopWords(String queryString) {
 
 public with sharing class DataCategoriesFactory {
 public getDataCategoriesInterface getDataCategoriesInstance() {
-	string dataCategoryClassName = [select proposalforce__className__c from proposalforce__Proposalforce_Info__mdt limit 1].proposalforce__className__c;
+	string dataCategoryClassName = [select className__c from Proposalforce_Info__mdt limit 1].className__c;
 	getDataCategoriesInterface getDataCategoryInstance = (getDataCategoriesInterface) Type.forName(dataCategoryClassName).newInstance();
 	return getDataCategoryInstance;
 }
@@ -239,18 +239,18 @@ public static string getKnowledgeCategories() {
 
 
 @AuraEnabled
-public static proposalforce__rfp_Question__c[] updateQuestion(proposalforce__rfp_Question__c question, string title, string answer) {
+public static rfp_Question__c[] updateQuestion(rfp_Question__c question, string title, string answer) {
 
 	try{
-		RFP_MainController.checkAccess('proposalforce__rfp_Question__c', question, 'update');
-		proposalforce__rfp_Response__c newResponse = new proposalforce__rfp_Response__c();
-		newResponse.proposalforce__Response_Text__c = answer;
-		RFP_MainController.checkAccess('proposalforce__rfp_Response__c', newResponse, 'create');
+		RFP_MainController.checkAccess('rfp_Question__c', question, 'update');
+		rfp_Response__c newResponse = new rfp_Response__c();
+		newResponse.Response_Text__c = answer;
+		RFP_MainController.checkAccess('rfp_Response__c', newResponse, 'create');
 		insert newResponse;
-		question.proposalforce__rfp_Response__c = newResponse.Id;
-		question.proposalforce__Status__c = 'Draft';
+		question.rfp_Response__c = newResponse.Id;
+		question.Status__c = 'Draft';
 		update question;
-		return RFP_MainController.getQuestions(question.proposalforce__RFP__c);
+		return RFP_MainController.getQuestions(question.RFP__c);
 	}
 	catch(exception e) {
 		throw new AuraHandledException(e.getMessage());
@@ -259,15 +259,15 @@ public static proposalforce__rfp_Question__c[] updateQuestion(proposalforce__rfp
 }
 
 @AuraEnabled
-public static proposalforce__rfp_Question__c[] updateQuestionStatus(proposalforce__rfp_Question__c question, String newStatus) {
+public static rfp_Question__c[] updateQuestionStatus(rfp_Question__c question, String newStatus) {
 	try{
 
-		RFP_MainController.checkAccess('proposalforce__rfp_Question__c', question, 'update');
+		RFP_MainController.checkAccess('rfp_Question__c', question, 'update');
 
 
-		question.proposalforce__Status__c = newStatus;
+		question.Status__c = newStatus;
 		update question;
-		return RFP_MainController.getQuestions(question.proposalforce__RFP__c);
+		return RFP_MainController.getQuestions(question.RFP__c);
 
 	}
 	catch(exception e) {
@@ -301,9 +301,9 @@ public static String createNewArticleVersion(Id articleId, Id articleVersionId) 
 
 
 @AuraEnabled
-public static proposalforce__RFP__c setNewComplianceResponses(proposalforce__RFP__c rfp) {
+public static RFP__c setNewComplianceResponses(RFP__c rfp) {
 
-	RFP_MainController.checkAccess('proposalforce__RFP__c', rfp, 'update');
+	RFP_MainController.checkAccess('RFP__c', rfp, 'update');
 	update rfp;
 	return rfp;
 }
@@ -315,36 +315,36 @@ public static String generateCSV(String rfpId) {
 	try{
 		string newContentDocumentId;
 
-		RFP_MainController.checkAccess('proposalforce__RFP_Question__c', new string[] {
-				'proposalforce__RFP_Question_Text__c',
-				'proposalforce__status__c',
-				'proposalforce__Compliance_Response__c',
-				'proposalforce__rfp__c'
+		RFP_MainController.checkAccess('RFP_Question__c', new string[] {
+				'RFP_Question_Text__c',
+				'status__c',
+				'Compliance_Response__c',
+				'rfp__c'
 			}, 'read');
 
-		RFP_MainController.checkAccess('proposalforce__RFP_Response__c', new string[] {
-				'proposalforce__Response_Text__c',
+		RFP_MainController.checkAccess('RFP_Response__c', new string[] {
+				'Response_Text__c',
 				'Name'
 			}, 'read');
 
 
 		RFP_Question__c[] questionsAndResponses = [SELECT name,
-		                                           proposalforce__RFP_Question_Text__c,
-		                                           proposalforce__status__c,
-		                                           proposalforce__Compliance_Response__c,
-		                                           proposalforce__RFP_Response__r.proposalforce__Response_Text__c,
-		                                           proposalforce__rfp__r.Name FROM proposalforce__RFP_Question__c WHERE proposalforce__rfp__c = :rfpId order by name];
+		                                           RFP_Question_Text__c,
+		                                           status__c,
+		                                           Compliance_Response__c,
+		                                           RFP_Response__r.Response_Text__c,
+		                                           rfp__r.Name FROM RFP_Question__c WHERE rfp__c = :rfpId order by name];
 		string header = 'Question,Response,Compliance, Status\n';
 		string resultCSV = header;
 
-		for(proposalforce__RFP_Question__c qAndA : questionsAndResponses) {
-			// string cleanedAnswer = qAndA.proposalforce__RFP_Response__r.proposalforce__Response_Text__c.replaceAll('<[^>]*>','');
-			string newRow = '"' + qAndA.proposalforce__RFP_Question_Text__c + '"' + ',' +
-			                '"' + qAndA.proposalforce__RFP_Response__r.proposalforce__Response_Text__c + '"' +
+		for(RFP_Question__c qAndA : questionsAndResponses) {
+			// string cleanedAnswer = qAndA.RFP_Response__r.Response_Text__c.replaceAll('<[^>]*>','');
+			string newRow = '"' + qAndA.RFP_Question_Text__c + '"' + ',' +
+			                '"' + qAndA.RFP_Response__r.Response_Text__c + '"' +
 			                ',' +
-			                '"' +  qAndA.proposalforce__Compliance_Response__c + '"' +
+			                '"' +  qAndA.Compliance_Response__c + '"' +
 			                ',' +
-			                '"' + qAndA.proposalforce__Status__c +  '"' + '\n';
+			                '"' + qAndA.Status__c +  '"' + '\n';
 
 			resultCSV += newRow;
 		}
@@ -356,7 +356,7 @@ public static String generateCSV(String rfpId) {
 		ContentVersion csv = new ContentVersion();
 		csv.VersionData = resultCSVBlob;
 		csv.PathOnClient = 'file_' + Datetime.now().getTime() + '.csv';
-		csv.Title =  questionsAndResponses[0].proposalforce__rfp__r.Name + ' Questions and Responses.csv';
+		csv.Title =  questionsAndResponses[0].rfp__r.Name + ' Questions and Responses.csv';
 
 		contentdocument[] matchingTitles = [select id, title from contentdocument where title = :csv.Title];
 		if(matchingTitles.size() == 0) {

@@ -19,13 +19,13 @@
       LeastRecent: (a, b) => (a.CreatedDate >= b.CreatedDate ? 1 : -1),
       MostRecent: (a, b) => (a.CreatedDate <= b.CreatedDate ? 1 : -1),
       LeastComplete: (a, b) =>
-        a.proposalforce__Completion_Percentage__c >=
-        b.proposalforce__Completion_Percentage__c
+        a.Completion_Percentage__c >=
+        b.Completion_Percentage__c
           ? 1
           : -1,
       MostComplete: (a, b) =>
-        a.proposalforce__Completion_Percentage__c <=
-        b.proposalforce__Completion_Percentage__c
+        a.Completion_Percentage__c <=
+        b.Completion_Percentage__c
           ? 1
           : -1
     }

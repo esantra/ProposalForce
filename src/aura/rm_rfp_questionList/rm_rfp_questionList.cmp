@@ -50,7 +50,7 @@
                   <lightning:input aura:id="filter" type="checkbox" label="Draft" name="Draft" />
                   <lightning:input aura:id="filter" type="checkbox" label="Approved" name="Approved" />
                 </div>
-                <lightning:progressBar value="{! rfp.proposalforce__Completion_Percentage__c }" />
+                <lightning:progressBar value="{! rfp.Completion_Percentage__c }" />
               </li>
             </aura:iteration>
           </ul>

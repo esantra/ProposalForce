@@ -29,7 +29,7 @@
               </aura:set>
             </aura:if>
             <div>
-              <div class="{!v.question.proposalforce__Status__c + ' status'}" />
+              <div class="{!v.question.Status__c + ' status'}" />
             </div>
             <span class="summary" title="Accordion summary">{!v.question.summary}&nbsp;</span>
           </button>
@@ -44,7 +44,7 @@
                 Question
               </dt>
               <dd class="slds-item_detail" title="Description for first label">
-                {!v.question.proposalforce__RFP_Question_Text__c}
+                {!v.question.RFP_Question_Text__c}
               </dd>
             </dl>
             <aura:if isTrue="{!v.state.selectedQuestionId == v.question.Id}">
@@ -56,13 +56,13 @@
     </section>
 
     <lightning:buttonMenu alternativeText="Toggle menu" class="menuButton" onselect="{! c.handleMenuSelect }">
-      <aura:if isTrue="{!v.question.proposalforce__Status__c == 'Draft' }">
+      <aura:if isTrue="{!v.question.Status__c == 'Draft' }">
         <lightning:menuItem label="Approve Response" value="updateQuestionStatus" iconName="utility:check" />
       </aura:if>
-      <lightning:menuItem label="View RFP Detail" value="{!v.question.proposalforce__RFP__c}" iconName="utility:description" />
+      <lightning:menuItem label="View RFP Detail" value="{!v.question.RFP__c}" iconName="utility:description" />
       <lightning:menuItem label="View Question Detail" value="{!v.question.Id}" iconName="utility:description" />
-      <aura:if isTrue="{!v.question.proposalforce__RFP_Response__r.Id != null }">
-        <lightning:menuItem label="View Response Detail" value="{!v.question.proposalforce__RFP_Response__r.Id}" iconName="utility:description"
+      <aura:if isTrue="{!v.question.RFP_Response__r.Id != null }">
+        <lightning:menuItem label="View Response Detail" value="{!v.question.RFP_Response__r.Id}" iconName="utility:description"
         />
       </aura:if>
 

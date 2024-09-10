@@ -28,20 +28,20 @@
           .fireApex('c.getQuestions', { selectedRfpId: recordId })
           .then(questions => {
             const responses = questions.map(q => ({
-              question: q.proposalforce__RFP_Question_Text__c || '',
+              question: q.RFP_Question_Text__c || '',
               response:
-                q.proposalforce__RFP_Response__r &&
-                q.proposalforce__RFP_Response__r.proposalforce__Response_Text__c
-                  ? q.proposalforce__RFP_Response__r.proposalforce__Response_Text__c.replace(
+                q.RFP_Response__r &&
+                q.RFP_Response__r.Response_Text__c
+                  ? q.RFP_Response__r.Response_Text__c.replace(
                       /<[^>]*>/g,
                       ''
                     )
                   : false,
-              hasResponse: !!q.proposalforce__RFP_Response__r,
-              compliance: q.proposalforce__Compliance_Response__c
-                ? q.proposalforce__Compliance_Response__c
+              hasResponse: !!q.RFP_Response__r,
+              compliance: q.Compliance_Response__c
+                ? q.Compliance_Response__c
                 : false,
-              hasCompliance: !!q.proposalforce__Compliance_Response__c
+              hasCompliance: !!q.Compliance_Response__c
             }))
 
             function loadFile(url, callback) {
@@ -83,7 +83,7 @@
                 .fireApex('c.generateWordDoc', {
                   doc: out,
                   rfpId: recordId,
-                  rfpName: questions[0].proposalforce__RFP__r.Name
+                  rfpName: questions[0].RFP__r.Name
                 })
                 .then(fileId => {
                   component.set('v.fileId', fileId)

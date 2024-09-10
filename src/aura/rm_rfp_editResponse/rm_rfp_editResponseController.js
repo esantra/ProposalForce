@@ -33,7 +33,7 @@
 
     component
       .find('complianceAnswer')
-      .set('v.value', selectedQuestion.proposalforce__Compliance_Response__c)
+      .set('v.value', selectedQuestion.Compliance_Response__c)
   },
   createArticle: function(component, event, helper) {
     const {
@@ -59,7 +59,7 @@
       const { selectedResponse, namespacePrefix, selectedQuestion } = state
       const question = selectedQuestion
       const complianceAnswer = component.find('complianceAnswer').get('v.value')
-      question.proposalforce__Compliance_Response__c = complianceAnswer
+      question.Compliance_Response__c = complianceAnswer
       if (!selectedResponse.Answer__c && !complianceAnswer)
         throw new Error('Response text or compliance answer must be populated.')
 

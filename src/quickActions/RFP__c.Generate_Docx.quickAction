@@ -9,7 +9,7 @@ For full license text, see the LICENSE file in the repo root or https: //opensou
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
     <height>250</height>
     <label>Generate Docx</label>
-    <lightningComponent>proposalforce__rm_rfp_generateWordDoc</lightningComponent>
+    <lightningComponent>rm_rfp_generateWordDoc</lightningComponent>
     <optionsCreateFeedItem>false</optionsCreateFeedItem>
     <type>LightningComponent</type>
     <width>-100</width>

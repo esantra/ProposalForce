@@ -26,9 +26,9 @@
         if (filters.includes('myQuestions')) {
           // the 'or' status contiditions plus 'and' condition of ownership
           if (
-            (filters.includes(q.proposalforce__Status__c) ||
+            (filters.includes(q.Status__c) ||
               filters.length === 1) &&
-            q.proposalforce__Assignee__c === userId
+            q.Assignee__c === userId
           ) {
             $A.util.removeClass(accordionItems[i], 'hidden')
           } else {
@@ -36,7 +36,7 @@
           }
           // only the 'or' conditions
         } else if (
-          filters.includes(q.proposalforce__Status__c) ||
+          filters.includes(q.Status__c) ||
           !filters.length
         ) {
           $A.util.removeClass(accordionItems[i], 'hidden')
@@ -50,12 +50,12 @@
   setSelectedRfp: function(component, event, helper) {
     const selectedRfpId = event.currentTarget.dataset.id
     const { RFPs } = component.get('v.state')
-    let { proposalforce__Compliance_Responses__c } = RFPs.filter(
+    let { Compliance_Responses__c } = RFPs.filter(
       rfp => rfp.Id === selectedRfpId
     )[0]
-    proposalforce__Compliance_Responses__c =
-      proposalforce__Compliance_Responses__c || ''
-    const selectedComplianceResponses = proposalforce__Compliance_Responses__c.split(
+    Compliance_Responses__c =
+      Compliance_Responses__c || ''
+    const selectedComplianceResponses = Compliance_Responses__c.split(
       ';'
     )
     helper.fireEvent('rm_rfp_action', {
@@ -94,9 +94,9 @@
       if (filters.includes('myQuestions')) {
         // the 'or' status contiditions plus 'and' condition of ownership
         if (
-          (filters.includes(q.proposalforce__Status__c) ||
+          (filters.includes(q.Status__c) ||
             filters.length === 1) &&
-          q.proposalforce__Assignee__c === userId
+          q.Assignee__c === userId
         ) {
           $A.util.removeClass(accordionItems[i], 'hidden')
         } else {
@@ -104,7 +104,7 @@
         }
         // only the 'or' conditions
       } else if (
-        filters.includes(q.proposalforce__Status__c) ||
+        filters.includes(q.Status__c) ||
         !filters.length
       ) {
         $A.util.removeClass(accordionItems[i], 'hidden')

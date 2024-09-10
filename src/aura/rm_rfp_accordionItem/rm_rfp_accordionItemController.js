@@ -22,30 +22,30 @@
   setSelectedQuestion: function(component, event, helper) {
     try {
       const question = component.get('v.question')
-      const { proposalforce__RFP_Response__r } = question
+      const { RFP_Response__r } = question
       const { selectedQuestionId, namespacePrefix } = component.get('v.state')
       let payload
 
       if (question.Id === selectedQuestionId) {
         payload = {
           selectedResponse: '',
-          query: question.proposalforce__RFP_Question_Text__c,
+          query: question.RFP_Question_Text__c,
           selectedQuestionId: null,
           selectedQuestion: null
         }
       } else {
-        const responseText = proposalforce__RFP_Response__r
-          ? proposalforce__RFP_Response__r.proposalforce__Response_Text__c
+        const responseText = RFP_Response__r
+          ? RFP_Response__r.Response_Text__c
           : ''
         payload = {
           selectedResponse: {
             Answer__c: responseText,
-            Title: proposalforce__RFP_Response__r
-              ? proposalforce__RFP_Response__r.Name
+            Title: RFP_Response__r
+              ? RFP_Response__r.Name
               : ''
           },
           selectedQuestionId: question.Id,
-          query: question.proposalforce__RFP_Question_Text__c,
+          query: question.RFP_Question_Text__c,
           selectedQuestion: question
         }
       }

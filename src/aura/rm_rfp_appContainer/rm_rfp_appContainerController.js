@@ -101,7 +101,7 @@
         const { newRFP } = payload
         const idxToReplace = RFPs.map(r => r.Id).indexOf(newRFP.Id)
         RFPs[idxToReplace] = newRFP
-        const newSelectedComplianceResponses = newRFP.proposalforce__Compliance_Responses__c.split(
+        const newSelectedComplianceResponses = newRFP.Compliance_Responses__c.split(
           ';'
         )
         helper.setState(component, {
