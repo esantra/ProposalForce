@@ -13,10 +13,10 @@
         <name>ApexClass</name>
     </types>
     <types>
-        <members>rm_RFP</members>
-        <members>rm_rfp_accordionItem</members>
+        <!--members>rm_RFP</members>
+        <members>rm_rfp_accordionItem</members-->
         <members>rm_rfp_action</members>
-        <members>rm_rfp_appContainer</members>
+        <!--members>rm_rfp_appContainer</members>
         <members>rm_rfp_editResponse</members>
         <members>rm_rfp_filters</members>
         <members>rm_rfp_generateCSV</members>
@@ -24,7 +24,7 @@
         <members>rm_rfp_pillBox</members>
         <members>rm_rfp_questionList</members>
         <members>rm_rfp_searchAndSortRFPs</members>
-        <members>rm_rfp_settingsPanel</members>
+        <members>rm_rfp_settingsPanel</members-->
         <name>AuraDefinitionBundle</name>
     </types>
     <types>
