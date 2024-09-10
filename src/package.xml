@@ -102,8 +102,8 @@
         <members>NewLead</members>
         <members>NewOpportunity</members>
         <members>NewTask</members>
-        <!--members>RFP__c.Generate_CSV</members>
-        <members>RFP__c.Generate_Docx</members-->
+        <members>RFP__c.Generate_CSV</members>
+        <members>RFP__c.Generate_Docx</members>
         <name>QuickAction</name>
     </types>
     <types>
