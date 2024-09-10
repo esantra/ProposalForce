@@ -3,8 +3,8 @@
     <fullName>ProposalForce</fullName>
     <apiAccessLevel>Unrestricted</apiAccessLevel>
     <types>
-        <members>RFPComponent</members>
-        <members>RFPResponseSearch</members>
+        <!--members>RFPComponent</members>
+        <members>RFPResponseSearch</members-->
         <members>RFPStopWords</members>
         <members>RFP_MainController</members>
         <members>getDataCategoriesInterface</members>
